@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function Main() {
+export default function AddIngredients() {
 
     const [ingredients, setIngredients] = useState([]);
 
@@ -9,21 +9,18 @@ export default function Main() {
         <li key={item}>{item}</li>
     ))
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
+    function addIngredients(formData) {
         const newIngredient = formData.get("ingredient")
         setIngredients(prevIngredients => [
             ...prevIngredients, newIngredient
         ])
-        event.target.reset()
     }
 
     return (
         <main>
             <form
                 className="add-ingredient-form"
-                onSubmit={handleSubmit}
+                action={addIngredients}
             >
                 <input
                     type="text"
