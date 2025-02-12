@@ -1,7 +1,7 @@
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: #F5F0E6;
+    background-color: #fff8eb;
 }
 
 .header-container {
@@ -76,4 +76,73 @@ main {
     outline: none;
     border-color: #000000;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* get recipe section */
+
+.get-recipe-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.get-recipe-section h3, 
+.ingredients-list {
+    align-items: flex-start;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.get-recipe-container  {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: auto auto;
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(207, 231, 255, 0.3);
+    background: linear-gradient(
+        135deg,
+        rgba(186, 241, 255, 0.15),
+        rgba(186, 224, 255, 0.3)
+    );
+    margin-top: 5rem;
+}
+
+.get-recipe-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(
+        135deg,
+        #a3d4ff,
+        #7bbdff
+    );
+    backdrop-filter: blur(16px);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 25px rgba(124, 185, 255, 0.3);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.get-recipe-button:hover {
+    transform: scale(1.01);
+    background: linear-gradient(
+        135deg,
+        #8cc2ff,
+        #5aa6ff
+    );
+    box-shadow: 0 6px 20px rgba(124, 185, 255, 0.4);
+}
+
+.get-recipe-button:active {
+    transform: translateY(0);
+
 }
