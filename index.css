@@ -1,3 +1,24 @@
+:root {
+    /* Primary Colors */
+    --primary-blue: #5aa6ff;
+    --primary-blue-light: #a3d4ff;
+    --primary-blue-dark: #5f94c3;
+    
+    /* Background Colors */
+    --bg-cream: #fff8eb;
+    --bg-white: #ffffff;
+    
+    /* Accent Colors */
+    --accent-warm: #fbefdc;
+    
+    /* Text Colors */
+    --text-primary: #000000;
+    --text-secondary: #4a5568;
+    
+    /* Border Colors */
+    --border-light: #D1D5DB;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -39,15 +60,18 @@ main {
     /* align-items: center; */
     justify-content: center;
     gap: 0.5rem;
+
+    margin-bottom: 3rem;
 }
 
-.add-ingredient-form > input {
+
+.add-ingredient-form > div > input {
     border-radius: 5px;
     border: 1px solid #D1D5DB;
     padding: 7px 20px;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
     flex-grow: 1;
-    min-width: 150px;
+    min-width: 250px;
     max-width: 400px;
 }
 
@@ -78,6 +102,24 @@ main {
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
+/* ingredients list section */
+
+/* .ingredients-list li {
+    background: linear-gradient(
+        135deg,
+        rgba(90, 166, 255, 0.1),
+        rgba(163, 212, 255, 0.2)
+    );
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+} */
+
+
 /* get recipe section */
 
 .get-recipe-section {
@@ -106,9 +148,9 @@ main {
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(207, 231, 255, 0.3);
     background: linear-gradient(
-        135deg,
-        rgba(186, 241, 255, 0.15),
-        rgba(186, 224, 255, 0.3)
+        1deg,
+        rgba(95, 148, 195, 0.5),
+        rgba(251, 239, 220, 0.8)
     );
     margin-top: 5rem;
 }
@@ -118,9 +160,9 @@ main {
     border: none;
     border-radius: 10px;
     background: linear-gradient(
-        135deg,
-        #a3d4ff,
-        #7bbdff
+        12deg,
+        var(--primary-blue-dark),
+        var(--primary-blue)
     );
     backdrop-filter: blur(16px);
     color: white;
@@ -136,8 +178,8 @@ main {
     transform: scale(1.01);
     background: linear-gradient(
         135deg,
-        #8cc2ff,
-        #5aa6ff
+        var(--primary-blue),
+        var(--primary-blue-dark)
     );
     box-shadow: 0 6px 20px rgba(124, 185, 255, 0.4);
 }
@@ -145,4 +187,41 @@ main {
 .get-recipe-button:active {
     transform: translateY(0);
 
+}
+
+.recipe-result-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 3rem 5.5rem;
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(
+        12deg,
+        rgba(95, 148, 195, 0.5),
+        rgba(251, 239, 220, 0.8)
+    );
+    backdrop-filter: blur(50px);
+    border-radius: 20px;
+}
+
+
+
+/* for input error messages */
+
+/* input container */
+
+.input-container {
+    position: relative;
+}
+
+.error-input {
+    border-color: #dc2626 !important;
+}
+
+.error-message {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    color: #dc2626;
+    font-size: 0.66rem;
 }

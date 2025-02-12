@@ -6,13 +6,31 @@ export default function AddIngredients() {
     const [ingredients, setIngredients] = useState([]);
 
     const [recipeShown, setRecipeShown] = useState(false);
+
+    const [error, setError] = useState("");
     
     function addIngredients(formData) {
         const newIngredient = formData.get("ingredient")
+
+        if (!newIngredient.trim()) {
+            setError("Please enter an ingredient");
+            return;
+        }
+
+        // if duplicate input
+        const isDuplicate = ingredients.some(ingredient =>
+            ingredient.toLowerCase() === newIngredient.trim().toLowerCase()
+        )
+
+        if (isDuplicate) {
+            setError(`${newIngredient} is already in the list`);
+            return;
+        }
+
+        setError("");
         setIngredients(prevIngredients => [
             ...prevIngredients, newIngredient
-        ]
-        );
+        ]);
     }
 
     const ingredientsList = ingredients.map(item => (
@@ -31,12 +49,17 @@ export default function AddIngredients() {
                 className="add-ingredient-form"
                 action={addIngredients}
             >
-                <input
-                    type="text"
-                    placeholder="e.g. oregano"
-                    aria-label="Add ingredient"
-                    name="ingredient"
-                />
+                <div className="input-container">
+                    <input
+                        type="text"
+                        placeholder="e.g. oregano"
+                        aria-label="Add ingredient"
+                        name="ingredient"
+                        className={error ? 'error-input' : ''}
+                        aria-invalid={error ? 'true' : 'false'}
+                    />
+                    {error && <span className="error-message" role="alert">{error}</span>}
+                </div>
                 <button
                     className="add-ingredient-button"
                 >
@@ -70,7 +93,7 @@ export default function AddIngredients() {
             </section>
             ) : null}
             {recipeShown && (
-                <section>
+                <section className="recipe-result-section">
                     <h2>Chef Claude Recommends:</h2>
                     <article className="suggested-recipe-container" aria-live="polite">
                         <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
