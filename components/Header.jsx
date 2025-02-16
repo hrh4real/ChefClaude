@@ -10,7 +10,7 @@ export default function Header() {
                     src={roboChef}
                     className="chef-img"
                 />
-                <h1>Chef Claude</h1>
+                <h1>Chef AI</h1>
             </header>
         </>
     );
