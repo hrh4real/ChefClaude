@@ -11,6 +11,8 @@ export default function AddIngredients() {
     const [recipe, setRecipe] = useState("");
 
     const [error, setError] = useState("");
+
+    const [isLoading, setIsLoading] = useState(false);
     
     function addIngredients(formData) {
         const newIngredient = formData.get("ingredient")
@@ -41,8 +43,15 @@ export default function AddIngredients() {
     ))
 
     async function getRecipe() {
-        const recipeMarkdown = await getRecipeFromMistral(ingredients)
-        setRecipe(recipeMarkdown)
+        setIsLoading(true);
+        try {
+            const recipeMarkdown = await getRecipeFromMistral(ingredients);
+            setRecipe(recipeMarkdown);
+        } catch (err) {
+            setError("Failed to generate recipe. Please try again.");
+        } finally {
+            setIsLoading(false); 
+        }
     }
 
     return (
@@ -72,6 +81,7 @@ export default function AddIngredients() {
                 <IngredientsList
                     ingredients={ingredients}
                     getRecipe={getRecipe}
+                    isLoading={isLoading}
                 />
             ) : null}
             {recipe && (

@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown';
 export default function Recipe(props) {
     return (
         <section className="recipe-result-section">
-            <ReactMarkdown
-            >
+            <h1>Hugging Face Recommends : </h1>
+            <ReactMarkdown>
                 {props.recipe}
             </ReactMarkdown>
         </section>

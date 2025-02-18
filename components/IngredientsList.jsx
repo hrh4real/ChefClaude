@@ -1,4 +1,5 @@
 import React from "react";
+import { Loader2 } from "lucide-react";
 
 export default function IngredientsList(props) {
     const ingredientsList = props.ingredients.map(item => (
@@ -21,8 +22,14 @@ export default function IngredientsList(props) {
                                 <button
                                     className="get-recipe-button"
                                     onClick={props.getRecipe}
+                                    disabled={props.isLoading}
                                 >
-                                    Get a recipe
+                                {props.isLoading ? (
+                                    <>
+                                        <Loader2 className="animate-spin" />
+                                        <span>Preparing recipe...</span>
+                                    </>
+                                    ) : ('Get a recipe')}
                                 </button>
                             </div>
                         </div>
