@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Recipe from "./Recipe";
 import IngredientsList from "./IngredientsList";
 import { getRecipeFromMistral } from "./ai";
@@ -9,6 +9,7 @@ export default function AddIngredients() {
     const [ingredients, setIngredients] = useState(["all major spices", "major dairy products", "butter", "pepper"]);
 
     const [recipe, setRecipe] = useState("");
+    const recipeSection = useRef(null)
 
     const [error, setError] = useState("");
 
@@ -22,7 +23,6 @@ export default function AddIngredients() {
             return;
         }
 
-        // if duplicate input
         const isDuplicate = ingredients.some(ingredient =>
             ingredient.toLowerCase() === newIngredient.trim().toLowerCase()
         )
@@ -54,6 +54,12 @@ export default function AddIngredients() {
         }
     }
 
+    useEffect(() => {
+        if (recipe !== "" && recipeSection.current !== null) {
+            recipeSection.current.scrollIntoView({behavior: "smooth"})
+        }
+    }, [recipe])
+
     return (
         <main>
             <form
@@ -82,11 +88,14 @@ export default function AddIngredients() {
                     ingredients={ingredients}
                     getRecipe={getRecipe}
                     isLoading={isLoading}
+                    ref={recipeSection}
                 />
             ) : null}
             {recipe && (
-                <Recipe recipe={recipe} />
+                <Recipe
+                    recipe={recipe}
+                />
             )}
         </main>
-    )
+    );
 }
